@@ -5,7 +5,7 @@ import { DeviceTable } from '../components/DeviceTable';
 import { AddDeviceModal } from '../components/AddDeviceModal';
 import { DeviceDetailsModal } from '../components/DeviceDetailsModal';
 import { useAuth } from '../context/AuthContext';
-import { Device, getAvailableRouteDates, mockDevices } from '../data/mockData';
+import { Device, getAvailableRouteDates, getVisibleDevicesForUser } from '../data/mockData';
 import { Plus, Download, Filter } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
@@ -19,15 +19,15 @@ export default function Devices() {
   const availableDates = getAvailableRouteDates();
   const [selectedDate, setSelectedDate] = useState(availableDates[0] ?? '2026-02-22');
 
-  const listedDevices = user?.role === 'admin'
-    ? mockDevices
-    : mockDevices.filter((d) => d.assignedTo === user?.email);
+  const listedDevices = getVisibleDevicesForUser(user);
 
   const searchedDevices = listedDevices.filter((device) =>
     device.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     device.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
     device.location.address.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const trackerTitle = user?.role === 'user' ? 'My Tracker' : 'All Employee Trackers';
 
   return (
     <div className="flex h-screen bg-gray-50">
@@ -76,7 +76,7 @@ export default function Devices() {
             <Card>
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle>All Employee Trackers ({searchedDevices.length})</CardTitle>
+                  <CardTitle>{trackerTitle} ({searchedDevices.length})</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>

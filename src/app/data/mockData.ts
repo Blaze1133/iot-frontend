@@ -65,6 +65,11 @@ export interface RouteActivity {
   assignedTo?: string;
 }
 
+export interface AuthScopeUser {
+  email: string;
+  role: 'admin' | 'manager' | 'user';
+}
+
 export const mockDevices: Device[] = [
   {
     id: 'TRK-001',
@@ -777,6 +782,42 @@ export const routeActivities: RouteActivity[] = [
     assignedTo: 'user@iot.com'
   }
 ];
+
+export function getVisibleDevicesForUser(user: AuthScopeUser | null): Device[] {
+  if (!user) return [];
+
+  if (user.role === 'admin') {
+    return mockDevices;
+  }
+
+  if (user.role === 'manager') {
+    return mockDevices.filter((device) => device.assignedTo === user.email);
+  }
+
+  // Employee users can only view their own tracker details.
+  const ownTrackerId = mockUsers.find((candidate) => candidate.email === user.email)?.assignedDevices[0];
+  if (!ownTrackerId) return [];
+
+  const ownDevice = mockDevices.find(
+    (device) => device.id === ownTrackerId && device.assignedTo === user.email
+  );
+  return ownDevice ? [ownDevice] : [];
+}
+
+export function getVisibleRouteActivitiesForUser(user: AuthScopeUser | null): RouteActivity[] {
+  if (!user) return [];
+
+  if (user.role === 'admin') {
+    return routeActivities;
+  }
+
+  if (user.role === 'manager') {
+    return routeActivities.filter((activity) => activity.assignedTo === user.email);
+  }
+
+  const ownDeviceIds = new Set(getVisibleDevicesForUser(user).map((device) => device.id));
+  return routeActivities.filter((activity) => ownDeviceIds.has(activity.trackerId));
+}
 
 export function getAvailableRouteDates(): string[] {
   const dates = new Set<string>();

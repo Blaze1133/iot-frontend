@@ -5,7 +5,7 @@ import { OverviewCard } from '../components/OverviewCard';
 import { EmployeeMapGrid } from '../components/EmployeeMapGrid';
 import { DeviceDetailsModal } from '../components/DeviceDetailsModal';
 import { useAuth } from '../context/AuthContext';
-import { Device, getAvailableRouteDates, getRouteRecordByDate, mockDevices } from '../data/mockData';
+import { Device, getAvailableRouteDates, getRouteRecordByDate, getVisibleDevicesForUser } from '../data/mockData';
 import { Users, MapPin, Radio, Clock, CalendarDays } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
 import { Input } from '../components/ui/input';
@@ -26,11 +26,7 @@ export default function Dashboard() {
   const availableDates = useMemo(() => getAvailableRouteDates(), []);
   const [selectedDate, setSelectedDate] = useState(availableDates[0] ?? '2026-02-22');
 
-  const roleFilteredDevices = user?.role === 'admin'
-    ? mockDevices
-    : user?.role === 'manager'
-    ? mockDevices.filter((d) => d.assignedTo === user.email)
-    : mockDevices.filter((d) => d.assignedTo === user?.email);
+  const roleFilteredDevices = getVisibleDevicesForUser(user);
 
   const datedDevices = roleFilteredDevices.map((device) => {
     const record = getRouteRecordByDate(device, selectedDate);
@@ -70,6 +66,8 @@ export default function Dashboard() {
     d.name.toLowerCase().includes(employeeFilter.toLowerCase()) ||
     d.id.toLowerCase().includes(employeeFilter.toLowerCase())
   );
+
+  const routeCardTitle = user?.role === 'user' ? 'My Route Path' : 'Employee Route Paths';
 
   return (
     <div className="flex h-screen bg-gray-50">
@@ -120,7 +118,7 @@ export default function Dashboard() {
               <CardHeader>
                 <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                   <div>
-                    <CardTitle>Employee Route Paths</CardTitle>
+                    <CardTitle>{routeCardTitle}</CardTitle>
                     <p className="mt-1 text-xs text-slate-500">Showing routes for {formatDateLabel(selectedDate)}</p>
                   </div>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center">

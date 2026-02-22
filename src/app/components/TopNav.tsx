@@ -5,7 +5,7 @@ import { Badge } from './ui/badge';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 import { useAuth } from '../context/AuthContext';
 import { useLayout } from '../context/LayoutContext';
-import { routeActivities } from '../data/mockData';
+import { getVisibleRouteActivitiesForUser } from '../data/mockData';
 import { useNavigate } from 'react-router';
 
 export function TopNav() {
@@ -13,13 +13,7 @@ export function TopNav() {
   const { toggleSidebar } = useLayout();
   const navigate = useNavigate();
 
-  const visibleActivities = routeActivities
-    .filter((activity) => {
-      if (!user) return false;
-      if (user.role === 'admin') return true;
-      return activity.assignedTo === user.email;
-    })
-    .slice(0, 8);
+  const visibleActivities = getVisibleRouteActivitiesForUser(user).slice(0, 8);
 
   const alertCount = visibleActivities.filter((activity) => activity.type === 'alert').length;
 
