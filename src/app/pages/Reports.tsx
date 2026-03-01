@@ -31,17 +31,17 @@ export default function Reports() {
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <TopNav />
-        <main className="flex-1 overflow-y-auto p-8">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           <div className="w-full space-y-6">
             {/* Header */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h1 className="text-2xl font-semibold text-slate-900">Business Reports</h1>
+                <h1 className="text-xl sm:text-2xl font-semibold text-slate-900">Business Reports</h1>
                 <p className="text-sm text-slate-600 mt-1">
                   Business-level tracking KPIs for distance, utilization, and compliance
                 </p>
               </div>
-              <div className="flex gap-3">
+              <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
                 <DateRangePicker />
                 <Button>
                   <Download className="w-4 h-4 mr-2" />
@@ -51,7 +51,7 @@ export default function Reports() {
             </div>
 
             {/* Summary Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="text-sm text-slate-600">Total Distance (Month)</CardTitle>
@@ -162,12 +162,12 @@ export default function Reports() {
                     { name: 'Sampling Compliance Executive Summary', date: 'Generated on Feb 18, 2026', size: '1.7 MB' },
                     { name: 'Employee Utilization and Coverage Report', date: 'Generated on Feb 15, 2026', size: '2.9 MB' },
                   ].map((report, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                      <div>
-                        <p className="font-medium text-gray-900">{report.name}</p>
+                    <div key={index} className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                      <div className="min-w-0">
+                        <p className="font-medium text-gray-900 truncate">{report.name}</p>
                         <p className="text-sm text-gray-500">{report.date} • {report.size}</p>
                       </div>
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" className="self-start sm:self-auto shrink-0">
                         <Download className="w-4 h-4 mr-2" />
                         Download
                       </Button>

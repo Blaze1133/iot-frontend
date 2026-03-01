@@ -24,10 +24,10 @@ export function DateRangePicker({ onDateChange }: DateRangePickerProps) {
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="w-[200px] justify-start">
+          <Button variant="outline" className="w-full sm:w-[200px] justify-start">
             <CalendarIcon className="mr-2 h-4 w-4" />
             {dateFrom ? format(dateFrom, 'PP') : 'Start date'}
           </Button>
@@ -42,11 +42,11 @@ export function DateRangePicker({ onDateChange }: DateRangePickerProps) {
         </PopoverContent>
       </Popover>
 
-      <span className="text-gray-500">to</span>
+      <span className="text-gray-500 hidden sm:inline">to</span>
 
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="w-[200px] justify-start">
+          <Button variant="outline" className="w-full sm:w-[200px] justify-start">
             <CalendarIcon className="mr-2 h-4 w-4" />
             {dateTo ? format(dateTo, 'PP') : 'End date'}
           </Button>

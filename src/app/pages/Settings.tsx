@@ -16,11 +16,11 @@ export default function Settings() {
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <TopNav />
-        <main className="flex-1 overflow-y-auto p-8">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           <div className="w-full space-y-6 max-w-5xl">
             {/* Header */}
             <div>
-              <h1 className="text-2xl font-semibold text-slate-900">Settings</h1>
+              <h1 className="text-xl sm:text-2xl font-semibold text-slate-900">Settings</h1>
               <p className="text-sm text-slate-600 mt-1">
                 Security, notification controls, and system preferences
               </p>
@@ -37,7 +37,7 @@ export default function Settings() {
                   <Label htmlFor="current-password">Current Password</Label>
                   <Input id="current-password" type="password" />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="new-password">New Password</Label>
                     <Input id="new-password" type="password" />

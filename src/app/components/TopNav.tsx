@@ -35,7 +35,7 @@ export function TopNav() {
           <Button variant="ghost" size="icon" className="h-10 w-10 shrink-0" onClick={toggleSidebar}>
             <Menu className="w-5 h-5 text-slate-600" />
           </Button>
-          <div className="relative w-full max-w-[760px]">
+          <div className="relative w-full max-w-[760px] hidden sm:block">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
             <Input
               type="text"

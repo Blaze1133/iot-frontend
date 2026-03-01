@@ -74,16 +74,16 @@ export default function Dashboard() {
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <TopNav />
-        <main className="flex-1 overflow-y-auto p-8">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           <div className="w-full space-y-6">
             <div>
-              <h1 className="text-2xl font-semibold text-slate-900">Daily Route Dashboard</h1>
+              <h1 className="text-xl sm:text-2xl font-semibold text-slate-900">Daily Route Dashboard</h1>
               <p className="text-sm text-slate-600 mt-1">
                 Employee location history and 10-minute coordinate sampling
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               <OverviewCard
                 title="Employees Tracked"
                 value={trackedEmployees}

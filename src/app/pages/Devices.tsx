@@ -34,17 +34,17 @@ export default function Devices() {
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <TopNav />
-        <main className="flex-1 overflow-y-auto p-8">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           <div className="w-full space-y-6">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h1 className="text-2xl font-semibold text-slate-900">Employee Trackers</h1>
+                <h1 className="text-xl sm:text-2xl font-semibold text-slate-900">Employee Trackers</h1>
                 <p className="text-sm text-slate-600 mt-1">
                   Daily routes with coordinate sampling every 10 minutes
                 </p>
               </div>
               {user?.role === 'admin' && (
-                <Button onClick={() => setShowAddDevice(true)}>
+                <Button className="self-start sm:self-auto" onClick={() => setShowAddDevice(true)}>
                   <Plus className="w-4 h-4 mr-2" />
                   Add Tracker
                 </Button>
@@ -53,7 +53,7 @@ export default function Devices() {
 
             <Card>
               <CardContent className="pt-6">
-                <div className="flex flex-col gap-3 lg:flex-row">
+                <div className="flex flex-col gap-3 sm:flex-row">
                   <div className="flex-1">
                     <Input
                       placeholder="Search by employee, tracker ID, or latest location..."
@@ -61,14 +61,16 @@ export default function Devices() {
                       onChange={(e) => setSearchQuery(e.target.value)}
                     />
                   </div>
-                  <Button variant="outline">
-                    <Filter className="w-4 h-4 mr-2" />
-                    Filters
-                  </Button>
-                  <Button variant="outline">
-                    <Download className="w-4 h-4 mr-2" />
-                    Export
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button variant="outline" className="flex-1 sm:flex-none">
+                      <Filter className="w-4 h-4 mr-2" />
+                      Filters
+                    </Button>
+                    <Button variant="outline" className="flex-1 sm:flex-none">
+                      <Download className="w-4 h-4 mr-2" />
+                      Export
+                    </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>

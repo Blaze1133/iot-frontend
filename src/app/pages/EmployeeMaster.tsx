@@ -76,16 +76,16 @@ export default function EmployeeMaster() {
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <TopNav />
-        <main className="flex-1 overflow-y-auto p-8">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           <div className="w-full space-y-6">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h1 className="text-2xl font-semibold text-slate-900">Employee Master</h1>
+                <h1 className="text-xl sm:text-2xl font-semibold text-slate-900">Employee Master</h1>
                 <p className="text-sm text-slate-600 mt-1">
                   Create employees first, then map tracker chips to employee IDs
                 </p>
               </div>
-              <Button onClick={() => setShowAddEmployee(true)}>
+              <Button className="self-start sm:self-auto" onClick={() => setShowAddEmployee(true)}>
                 <Plus className="w-4 h-4 mr-2" />
                 Add Employee
               </Button>
@@ -106,8 +106,8 @@ export default function EmployeeMaster() {
                 <CardTitle>All Employees ({searchedEmployees.length})</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="border border-slate-200 rounded-lg overflow-hidden bg-white">
-                  <Table>
+                <div className="border border-slate-200 rounded-lg overflow-hidden bg-white overflow-x-auto">
+                  <Table className="min-w-[700px]">
                     <TableHeader>
                       <TableRow className="bg-slate-50">
                         <TableHead>Employee ID</TableHead>
