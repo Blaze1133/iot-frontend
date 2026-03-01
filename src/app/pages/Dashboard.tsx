@@ -121,19 +121,19 @@ export default function Dashboard() {
                     <CardTitle>{routeCardTitle}</CardTitle>
                     <p className="mt-1 text-xs text-slate-500">Showing routes for {formatDateLabel(selectedDate)}</p>
                   </div>
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center w-full lg:w-auto">
                     <Input
                       value={employeeFilter}
                       onChange={(e) => setEmployeeFilter(e.target.value)}
-                      placeholder="Filter employee cards by name or tracker ID..."
+                      placeholder="Filter by name or ID..."
                       className="w-full sm:w-80"
                     />
-                    <div className="flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3">
-                      <CalendarDays className="h-4 w-4 text-slate-400" />
+                    <div className="flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 w-full sm:w-auto">
+                      <CalendarDays className="h-4 w-4 text-slate-400 shrink-0" />
                       <select
                         value={selectedDate}
                         onChange={(e) => setSelectedDate(e.target.value)}
-                        className="h-9 bg-transparent text-sm text-slate-700 outline-none"
+                        className="h-9 bg-transparent text-sm text-slate-700 outline-none w-full"
                         aria-label="Select date"
                       >
                         {availableDates.map((date) => (

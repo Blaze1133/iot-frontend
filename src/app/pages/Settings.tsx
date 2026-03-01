@@ -58,24 +58,24 @@ export default function Settings() {
                 <CardDescription>Choose the route alerts that matter for operations</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="space-y-0.5 min-w-0">
                     <Label>Missed Sampling Warnings</Label>
                     <p className="text-sm text-slate-500">
                       Alert when 10-minute coordinate samples are missed
                     </p>
                   </div>
-                  <Switch defaultChecked />
+                  <Switch defaultChecked className="shrink-0" />
                 </div>
                 <Separator />
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="space-y-0.5 min-w-0">
                     <Label>Route Updates</Label>
                     <p className="text-sm text-slate-500">
                       Notify when route movement updates are detected
                     </p>
                   </div>
-                  <Switch />
+                  <Switch className="shrink-0" />
                 </div>
               </CardContent>
             </Card>
@@ -88,24 +88,24 @@ export default function Settings() {
                   <CardDescription>Configure system-wide settings</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-0.5">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="space-y-0.5 min-w-0">
                       <Label>Auto-refresh Dashboard</Label>
                       <p className="text-sm text-slate-500">
                         Automatically update device data every 30 seconds
                       </p>
                     </div>
-                    <Switch defaultChecked />
+                    <Switch defaultChecked className="shrink-0" />
                   </div>
                   <Separator />
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-0.5">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="space-y-0.5 min-w-0">
                       <Label>Data Retention</Label>
                       <p className="text-sm text-slate-500">
                         Keep location history for 90 days
                       </p>
                     </div>
-                    <Switch defaultChecked />
+                    <Switch defaultChecked className="shrink-0" />
                   </div>
                 </CardContent>
               </Card>

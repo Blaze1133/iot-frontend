@@ -75,13 +75,13 @@ export default function Devices() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="overflow-hidden">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle>{trackerTitle} ({searchedDevices.length})</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="px-0 sm:px-6">
                 <DeviceTable
                   devices={searchedDevices}
                   showActions={user?.role === 'admin'}

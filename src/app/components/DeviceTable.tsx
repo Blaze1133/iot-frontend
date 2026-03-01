@@ -27,7 +27,7 @@ interface DeviceTableProps {
 
 export function DeviceTable({ devices, onEdit, onDelete, onViewDetails, showActions = true }: DeviceTableProps) {
   return (
-    <div className="border border-gray-200 rounded-lg overflow-hidden overflow-x-auto">
+    <div className="border-y sm:border border-gray-200 sm:rounded-lg overflow-x-auto">
       <Table className="min-w-[800px]">
         <TableHeader>
           <TableRow className="bg-gray-50">

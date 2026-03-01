@@ -101,12 +101,12 @@ export default function EmployeeMaster() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="overflow-hidden">
               <CardHeader>
                 <CardTitle>All Employees ({searchedEmployees.length})</CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="border border-slate-200 rounded-lg overflow-hidden bg-white overflow-x-auto">
+              <CardContent className="px-0 sm:px-6">
+                <div className="border-y sm:border border-slate-200 sm:rounded-lg overflow-x-auto bg-white">
                   <Table className="min-w-[700px]">
                     <TableHeader>
                       <TableRow className="bg-slate-50">

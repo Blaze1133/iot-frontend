@@ -35,12 +35,12 @@ export function TopNav() {
           <Button variant="ghost" size="icon" className="h-10 w-10 shrink-0" onClick={toggleSidebar}>
             <Menu className="w-5 h-5 text-slate-600" />
           </Button>
-          <div className="relative w-full max-w-[760px] hidden sm:block">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
+          <div className="relative flex-1 max-w-[760px] min-w-0">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
             <Input
               type="text"
-              placeholder="Search employees, trackers, or Visakhapatnam checkpoints..."
-              className="h-11 pl-10 pr-4 w-full border-slate-300 bg-white placeholder:text-slate-500"
+              placeholder="Search..."
+              className="h-9 sm:h-11 pl-9 sm:pl-10 pr-4 w-full border-slate-300 bg-white placeholder:text-slate-500 text-sm"
             />
           </div>
         </div>
@@ -55,7 +55,7 @@ export function TopNav() {
                 </Badge>
               </Button>
             </PopoverTrigger>
-            <PopoverContent align="end" className="w-[360px] p-0">
+            <PopoverContent align="end" className="w-[calc(100vw-2rem)] sm:w-[360px] max-w-[360px] p-0">
               <div className="p-4 border-b border-slate-100">
                 <h3 className="text-sm font-semibold text-slate-900">Recent Activity</h3>
                 <p className="text-xs text-slate-500 mt-1">Employee routes and coordinate updates</p>

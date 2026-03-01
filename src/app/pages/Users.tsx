@@ -76,12 +76,12 @@ export default function Users() {
             </Card>
 
             {/* Users Table */}
-            <Card>
+            <Card className="overflow-hidden">
               <CardHeader>
                 <CardTitle>All Users ({searchedUsers.length})</CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="border border-slate-200 rounded-lg overflow-hidden overflow-x-auto">
+              <CardContent className="px-0 sm:px-6">
+                <div className="border-y sm:border border-slate-200 sm:rounded-lg overflow-x-auto bg-white">
                   <Table className="min-w-[700px]">
                     <TableHeader>
                       <TableRow className="bg-slate-50">
